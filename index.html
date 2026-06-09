@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zhenxing Instrument Center</title>
+
+<style>
+html{
+scroll-behavior:smooth;
+}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f5f5f5;
+font-size:18px;
+}
+
+header{
+background:#fff;
+padding:15px 50px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 5px rgba(0,0,0,.1);
+}
+
+.logo{
+font-size:32px;
+font-weight:bold;
+color:#c40000;
+}
+
+nav a{
+text-decoration:none;
+margin:0 15px;
+color:#333;
+font-weight:600;
+}
+
+.hero{
+height:600px;
+background:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.5)),
+url('https://images.unsplash.com/photo-1581092335397-9583eb92d232');
+background-size:cover;
+background-position:center;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+}
+
+.hero-content h1{
+font-size:60px;
+margin-bottom:20px;
+}
+
+.hero-content p{
+font-size:26px;
+margin-bottom:30px;
+}
+
+.btn{
+padding:15px 30px;
+background:#c40000;
+color:white;
+text-decoration:none;
+border-radius:5px;
+margin:10px;
+display:inline-block;
+}
+
+.section{
+padding:80px 10%;
+}
+
+.title{
+text-align:center;
+font-size:44px;
+margin-bottom:50px;
+color:#222;
+}
+
+.products{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.card img{
+width:100%;
+height:220px;
+object-fit:cover;
+}
+
+.card h3{
+padding:15px;
+}
+
+.card p{
+padding:0 15px 20px;
+color:#666;
+}
+
+/* Factory Show */
+.factory-section {
+padding:100px 8%;
+background:#fff;
+}
+.factory-header {
+text-align:center;
+margin-bottom:60px;
+}
+.factory-tag {
+color:#c40000;
+font-weight:700;
+letter-spacing:2px;
+}
+.factory-header h2 {
+font-size:48px;
+margin-top:15px;
+color:#222;
+}
+.factory-header p {
+color:#666;
+margin-top:15px;
+}
+.factory-hero {
+position:relative;
+border-radius:20px;
+overflow:hidden;
+margin-bottom:60px;
+}
+.factory-hero img {
+width:100%;
+height:400px;
+object-fit:cover;
+}
+.hero-overlay {
+position:absolute;
+inset:0;
+background:rgba(0,0,0,.45);
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:#fff;
+}
+.hero-overlay h3 {
+font-size:52px;
+}
+.hero-overlay p {
+margin-top:20px;
+font-size:20px;
+}
+.factory-stats {
+display:flex;
+justify-content:center;
+gap:80px;
+margin-bottom:80px;
+}
+.stat-box {
+text-align:center;
+}
+.stat-box h3 {
+font-size:52px;
+color:#c40000;
+}
+.stat-box p {
+color:#666;
+}
+.factory-grid {
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+}
+.factory-card {
+position:relative;
+overflow:hidden;
+border-radius:15px;
+}
+.factory-card img {
+width:100%;
+height:240px;
+object-fit:cover;
+transition:.5s;
+}
+.factory-card:hover img {
+transform:scale(1.08);
+}
+.card-overlay {
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+padding:25px;
+background:linear-gradient(transparent,rgba(0,0,0,.85));
+color:#fff;
+}
+
+.contact{
+background:#c40000;
+color:white;
+text-align:center;
+padding:80px 20px;
+}
+
+.whatsapp{
+position:fixed;
+right:20px;
+bottom:20px;
+background:#25D366;
+color:white;
+padding:15px 25px;
+border-radius:50px;
+text-decoration:none;
+font-weight:bold;
+}
+
+/* Swiper Carousel */
+.product-carousel {
+padding:50px 5%;
+background:#f5f5f5;
+}
+.product-carousel .title {
+text-align:center;
+font-size:44px;
+margin-bottom:40px;
+color:#222;
+}
+.swiper-slide {
+background:#fff;
+border-radius:10px;
+text-align:center;
+box-shadow:0 5px 15px rgba(0,0,0,.1);
+padding:20px;
+display:flex;
+flex-direction:column;
+justify-content:flex-start;
+transition:transform .3s,box-shadow .3s;
+height:auto;
+}
+.swiper-slide:hover {
+transform:translateY(-5px);
+box-shadow:0 10px 20px rgba(0,0,0,.2);
+}
+.swiper-slide img {
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:5px;
+margin-bottom:15px;
+}
+.swiper-slide h3 {
+color:#c40000;
+margin-bottom:5px;
+}
+.swiper-slide .model,.swiper-slide .standard {
+font-size:14px;
+color:#555;
+margin-bottom:5px;
+}
+.swiper-slide p {
+font-size:13px;
+color:#666;
+margin-bottom:10px;
+}
+.swiper-button-next,.swiper-button-prev {
+color:#c40000;
+}
+.swiper-pagination-bullet-active {
+background:#c40000;
+}
+
+/* Why Choose Zhenxing */
+.why-zhenxing {
+padding:80px 8%;
+background:#fff;
+}
+.why-zhenxing .section-title {
+text-align:center;
+margin-bottom:60px;
+}
+.why-zhenxing .section-title h2 {
+font-size:42px;
+font-weight:700;
+color:#222;
+margin-bottom:15px;
+opacity:0;
+transform:translateY(20px);
+animation:fadeInUp .6s forwards;
+}
+.why-zhenxing .section-title p {
+font-size:18px;
+color:#666;
+opacity:0;
+transform:translateY(20px);
+animation:fadeInUp .6s forwards .2s;
+}
+.advantage-grid {
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:25px;
+}
+.advantage-item {
+background:#fff;
+border:1px solid #eee;
+border-radius:12px;
+padding:35px 25px;
+text-align:center;
+opacity:0;
+transform:translateY(20px);
+transition:transform .3s,box-shadow .3s;
+}
+.advantage-item:hover {
+transform:translateY(-8px);
+box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
+.advantage-item .icon {
+font-size:42px;
+margin-bottom:15px;
+}
+.advantage-item h3 {
+font-size:20px;
+color:#c40000;
+margin-bottom:10px;
+}
+.advantage-item p {
+color:#666;
+line-height:1.6;
+}
+@keyframes fadeInUp {
+to { opacity:1; transform:translateY(0); }
+}
+@media(max-width:768px) {
+.advantage-grid {
+grid-template-columns:1fr;
+}
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+</head>
+
+<body>
+
+<header>
+<div class="logo">
+Zhenxing Instrument Center
+</div>
+
+<nav>
+<a href=" ">Home</a >
+<a href="#products">Products</a >
+<a href="#contact">Contact</a >
+
+</nav>
+</header>
+
+<section class="hero">
+<div class="hero-content">
+<h1>Professional Asphalt Testing Equipment Manufacturer</h1>
+<p>Providing Complete Laboratory Testing Solutions Worldwide</p >
+
+<a href="#" class="btn">WhatsApp Us</a >
+</div>
+</section>
+
+<section class="product-carousel" id="products">
+<h2 class="title">Product Catalog</h2>
+<div class="swiper mySwiper">
+<div class="swiper-wrapper">
+
+<div class="swiper-slide">
+<img src="https://picsum.photos/400/300?1" alt="Asphalt Ductility Tester">
+<h3>Asphalt Ductility Tester</h3>
+<div class="model">Model: SYD-4508C</div>
+<div class="standard">ASTM D113</div>
+<p>Used for testing the ductility properties of asphalt materials.</p >
+</div>
+
+<div class="swiper-slide">
+<img src="https://picsum.photos/400/300?2" alt="Maximum Theoretical Density Tester">
+<h3>Maximum Theoretical Density Tester</h3>
+<div class="model">Model: SYD-0613</div>
+<div class="standard">ASTM D2041</div>
+<p>Used for determining the maximum specific gravity of asphalt mixtures.</p >
+</div>
+
+<div class="swiper-slide">
+<img src="https://picsum.photos/400/300?3" alt="Rolling Thin Film Oven">
+<h3>Rolling Thin Film Oven</h3>
+<div class="model">Model: SYD-0610</div>
+<div class="standard">ASTM D2872</div>
+<p>Used for measuring the effect of heat and air on asphalt binder.</p >
+</div>
+
+<div class="swiper-slide">
+<img src="https://picsum.photos/400/300?4" alt="Flash Point Tester">
+<h3>Cleveland Open Cup Flash Point Tester</h3>
+<div class="model">Model: SYD-3536</div>
+<div class="standard">ASTM D92</div>
+<p>Used for determining the flash point of petroleum products.</p >
+</div>
+
+<div class="swiper-slide">
+<img src="https://picsum.photos/400/300?5" alt="Penetrometer">
+<h3>Asphalt Penetrometer</h3>
+<div class="model">Model: SYD-2801E</div>
+<div class="standard">ASTM D5</div>
+<p>Used for measuring the penetration of asphalt materials.</p >
+</div>
+
+<div class="swiper-slide">
+<img src="https://picsum.photos/400/300?6" alt="Softening Point Tester">
+<h3>Softening Point Tester</h3>
+<div class="model">Model: SYD-2806F</div>
+<div class="standard">ASTM D36</div>
+<p>Used for determining the softening point of bitumen.</p >
+</div>
+
+</div>
+<div class="swiper-button-next"></div>
+<div class="swiper-button-prev"></div>
+<div class="swiper-pagination"></div>
+</div>
+</section>
+
+<section class="why-zhenxing">
+<div class="section-title">
+<h2>Why Choose Zhenxing</h2>
+<p>Professional Asphalt Testing Equipment Manufacturer</p >
+</div>
+
+<div class="advantage-grid">
+<div class="advantage-item" data-delay="0">
+<div class="icon">🏭</div>
+<h3>Factory Direct</h3>
+<p>Manufacturer with competitive factory pricing.</p >
+</div>
+
+<div class="advantage-item" data-delay="150">
+<div class="icon">🌍</div>
+<h3>50+ Countries</h3>
+<p>Export experience across Middle East, Asia and Africa.</p >
+</div>
+
+<div class="advantage-item" data-delay="300">
+<div class="icon">📋</div>
+<h3>ASTM Standards</h3>
+<p>Designed according to international testing standards.</p >
+</div>
+
+<div class="advantage-item" data-delay="450">
+<div class="icon">⚡</div>
+<h3>Fast Delivery</h3>
+<p>Quick production and worldwide shipment.</p >
+</div>
+</div>
+</section>
+
+<section class="factory-section">
+<div class="factory-header">
+<span class="factory-tag">FACTORY TOUR</span>
+<h2>Professional Testing Equipment Manufacturer</h2>
+<p>Trusted by laboratories, contractors and distributors worldwide.</p >
+</div>
+
+<div class="factory-hero">
+<img src="https://images.pexels.com/photos/1216589/pexels-photo-1216589.jpeg?w=1200&h=600&fit=crop" alt="Road Construction">
+<div class="hero-overlay">
+<h3>Manufacturing Excellence Since 2010</h3>
+<p>Factory Direct Supply · Global Export · ASTM Standards</p >
+</div>
+</div>
+
+<div class="factory-stats">
+<div class="stat-box"><h3>15+</h3><p>Years Experience</p ></div>
+<div class="stat-box"><h3>5000+</h3><p>Equipment Delivered</p ></div>
+<div class="stat-box"><h3>50+</h3><p>Export Countries</p ></div>
+</div>
+
+<div class="factory-grid">
+<div class="factory-card">
+<img src="gongchang.jpg" alt="Production Workshop">
+<div class="card-overlay"><h4>Production Workshop</h4><p>Advanced Manufacturing Facilities</p ></div>
+</div>
+<div class="factory-card">
+<img src="gongchang1.jpg" alt="Assembly Line">
+<div class="card-overlay"><h4>Assembly Line</h4><p>Experienced Technical Team</p ></div>
+</div>
+</div>
+</section>
+
+<section class="contact" id="contact">
+<h2>Contact Us</h2>
+
+<br>
+
+<p>Zhenxing Instrument Center</p >
+
+<p>WhatsApp: +86 18730797909</p >
+
+<p>Email: mengzhennii44@gmail.com</p >
+
+</section>
+
+<a class="whatsapp"
+href="https://wa.me/8618730797909">
+WhatsApp
+</a >
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+<script>
+var swiper = new Swiper(".mySwiper", {
+slidesPerView:3,
+spaceBetween:30,
+loop:true,
+autoHeight:false,
+navigation:{nextEl:".swiper-button-next",prevEl:".swiper-button-prev"},
+pagination:{el:".swiper-pagination",clickable:true},
+breakpoints:{
+0:{slidesPerView:1},
+768:{slidesPerView:2},
+1024:{slidesPerView:3}
+}
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // 优势卡片延迟淡入
+    document.querySelectorAll('.advantage-item').forEach(function(el) {
+        var delay = parseInt(el.getAttribute('data-delay')) || 0;
+        setTimeout(function() {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+        }, delay);
+    });
+
+});
+</script>
+</body>
+</html>
